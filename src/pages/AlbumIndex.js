@@ -78,6 +78,9 @@ function AlbumIndex() {
     try {
       const results = await searchAlbumArtwork(formData.artist, formData.title);
       setArtworkResults(results);
+      if (results.length === 0) {
+        alert('No album artwork found. Try adjusting the artist or title, or enter the image URL manually.');
+      }
     } catch (err) {
       alert('Failed to search for artwork');
     } finally {

@@ -217,23 +217,54 @@ const deleteReview = async (reviewId) => {
 
 const searchAlbumArtwork = async (artist, albumTitle) => {
   try {
-    const query = encodeURIComponent(`${artist} ${albumTitle}`);
-    const res = await fetch(`https://itunes.apple.com/search?term=${query}&entity=album&limit=5`);
+    // Clean up search terms
+    const cleanArtist = artist.trim();
+    const cleanTitle = albumTitle.trim();
+    
+    // Try exact match first
+    const exactQuery = encodeURIComponent(`${cleanArtist} ${cleanTitle}`);
+    let res = await fetch(`https://itunes.apple.com/search?term=${exactQuery}&entity=album&limit=10`);
     
     if (res.ok) {
       const data = await res.json();
       if (data.results && data.results.length > 0) {
-        // Return array of results with artwork
-        return data.results.map(result => ({
-          artworkUrl: result.artworkUrl100.replace('100x100', '600x600'), // Get larger image
-          albumName: result.collectionName,
-          artistName: result.artistName,
-          releaseDate: result.releaseDate
-        }));
+        // Filter and sort results by relevance
+        const results = data.results
+          .filter(result => result.artworkUrl100) // Only include results with artwork
+          .map(result => ({
+            artworkUrl: result.artworkUrl100.replace('100x100', '600x600'), // Get larger image
+            albumName: result.collectionName,
+            artistName: result.artistName,
+            releaseDate: result.releaseDate ? new Date(result.releaseDate).getFullYear() : null
+          }));
+        
+        if (results.length > 0) {
+          return results;
+        }
       }
     }
+    
+    // If no results, try artist-only search as fallback
+    const artistQuery = encodeURIComponent(cleanArtist);
+    res = await fetch(`https://itunes.apple.com/search?term=${artistQuery}&entity=album&limit=10`);
+    
+    if (res.ok) {
+      const data = await res.json();
+      if (data.results && data.results.length > 0) {
+        return data.results
+          .filter(result => result.artworkUrl100)
+          .map(result => ({
+            artworkUrl: result.artworkUrl100.replace('100x100', '600x600'),
+            albumName: result.collectionName,
+            artistName: result.artistName,
+            releaseDate: result.releaseDate ? new Date(result.releaseDate).getFullYear() : null
+          }));
+      }
+    }
+    
     return [];
   } catch (err) {
+    console.error('Album artwork search error:', err);
     return [];
   }
 };

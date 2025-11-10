@@ -664,15 +664,18 @@ button[type="button"]:hover {
   border-color: var(--primary-color);
 }
 
-.review-form .form-actions button[type="button"] {
-  background-color: transparent;
-  color: var(--primary-color);
-  border-color: var(--primary-color);
+.review-form .form-actions button[type="button"],
+.reviews-section .form-actions button[type="button"] {
+  background-color: transparent !important;
+  color: var(--primary-color) !important;
+  border-color: var(--primary-color) !important;
 }
 
-.review-form .form-actions button[type="button"]:hover {
-  background-color: var(--primary-color);
-  color: var(--text-light);
+.review-form .form-actions button[type="button"]:hover,
+.reviews-section .form-actions button[type="button"]:hover {
+  background-color: var(--primary-color) !important;
+  color: var(--text-light) !important;
+  transform: translateY(-2px);
 }
 
 .reviews-list {
