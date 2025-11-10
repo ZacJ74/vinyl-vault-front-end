@@ -126,9 +126,13 @@ function AlbumIndex() {
 
   return (
     <div className="album-index">
-      <h1>My Vinyl Vault 🎶</h1>
-      
-      <button onClick={() => handleOpenForm()} className="btn-add">Add New Album</button>
+      <div className="index-header">
+        <div className="header-content">
+          <h1>My Collection</h1>
+          {user?.username && <p className="greeting">Hello, {user.username}!</p>}
+        </div>
+        <button onClick={() => handleOpenForm()} className="btn-add">+ Add New Album</button>
+      </div>
 
       {showForm && (
         <div className="album-form-container">

@@ -13,16 +13,17 @@ function Header() {
 
   return (
     <nav className="header-nav">
-      <div className="nav-left">
-        <Link to="/">Home</Link>
-        {isAuthenticated && (
-          <Link to="/albums">My Albums</Link>
-        )}
+      <div className="nav-brand">
+        <Link to="/" className="brand-link">
+          <span className="vinyl-icon">🎵</span>
+          <span className="brand-name">VinylVault</span>
+        </Link>
       </div>
-      <div className="nav-right">
+      <div className="nav-links">
         {isAuthenticated ? (
           <>
-            <span className="user-greeting">Welcome, {user?.username}!</span>
+            <Link to="/albums">My Collection</Link>
+            <span className="user-greeting">Hello, {user?.username}!</span>
             <button onClick={handleSignOut} className="btn-signout">Sign Out</button>
           </>
         ) : (

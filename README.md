@@ -1,70 +1,75 @@
-# Getting Started with Create React App
+# 🎵 Vinyl Vault
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+![Vinyl Vault Screenshot](https://via.placeholder.com/800x400/6a0dad/ffffff?text=Vinyl+Vault)
 
-## Available Scripts
+## Description
 
-In the project directory, you can run:
+Vinyl Vault is a full-stack MERN application that allows music enthusiasts to catalog and manage their vinyl record collections. Users can create an account, add albums to their personal vault, edit album details, and delete records from their collection. The app features JWT-based authentication and authorization to ensure each user's collection remains private and secure.
 
-### `npm start`
+### Why I Built This
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+As a vinyl collector myself, I wanted to create a digital catalog to keep track of my growing collection. This app helps users organize their albums, remember what they own, and avoid purchasing duplicates.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## Getting Started
 
-### `npm test`
+**Deployed App:** [Coming Soon - Netlify Link]
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+**Backend Repository:** [VinylVault-backend](https://github.com/YOUR_USERNAME/VinylVault-backend)
 
-### `npm run build`
+**Planning Materials:** [Project Planning Document](https://trello.com/YOUR_BOARD_LINK)
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+### Installation
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+1. Clone the repository:
+```bash
+git clone https://github.com/YOUR_USERNAME/vinylvault-frontend.git
+cd vinylvault-frontend
+```
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+2. Install dependencies:
+```bash
+npm install
+```
 
-### `npm run eject`
+3. Create a `.env` file in the root directory:
+```
+REACT_APP_BACK_END_SERVER_URL=http://localhost:3000
+```
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+4. Start the development server:
+```bash
+npm start
+```
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+The app will open at [http://localhost:3001](http://localhost:3001)
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+## Technologies Used
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+- **Frontend Framework:** React 19.2.0
+- **Routing:** React Router DOM 7.9.5
+- **HTTP Requests:** Native Fetch API
+- **Styling:** CSS3 with CSS Grid and Flexbox
+- **Authentication:** JWT (JSON Web Tokens)
+- **State Management:** React Context API
+- **Build Tool:** Create React App
 
-## Learn More
+## Attributions
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+- Color palette inspired by vinyl record aesthetics
+- Icons: Standard HTML/CSS
+- Placeholder images: [via.placeholder.com](https://via.placeholder.com)
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+## Next Steps
 
-### Code Splitting
+Planned future enhancements:
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+- [ ] **Review System:** Add ability to write and view reviews for albums
+- [ ] **Search & Filter:** Implement search by artist, title, or genre
+- [ ] **Album Details Page:** Dedicated page for each album with full track listings
+- [ ] **Image Upload:** Allow users to upload their own album cover images
+- [ ] **Statistics Dashboard:** Show collection statistics (total albums, genres breakdown, etc.)
+- [ ] **Wishlist Feature:** Separate list for albums users want to acquire
+- [ ] **Social Features:** Share collections with other users
+- [ ] **Dark Mode:** Toggle between light and dark themes
+- [ ] **Export Collection:** Download collection data as CSV or PDF
+- [ ] **Mobile App:** React Native version for iOS and Android

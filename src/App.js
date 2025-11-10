@@ -1,6 +1,7 @@
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
-import Header from './components/Header'; // Assuming you have a Header component
+import './App.css';
+import Header from './components/Header';
 import { AuthProvider, useAuth } from './contexts/AuthContext';
 
 
