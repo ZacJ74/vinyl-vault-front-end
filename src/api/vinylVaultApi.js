@@ -87,6 +87,18 @@ const getAlbums = async () => {
   }
 };
 
+const getPublicAlbums = async () => {
+  try {
+    const res = await fetch(`${BASE_URL}/albums/public`);
+    if (res.ok) {
+      return res.json();
+    }
+    throw new Error('Failed to fetch public albums');
+  } catch (err) {
+    throw err;
+  }
+};
+
 // Get a single album by ID
 const getAlbum = async (id) => {
   try {
@@ -161,4 +173,82 @@ function buildOptions(data, method = 'GET') {
 }
 
 
-export { getAlbums, getAlbum, createAlbum, updateAlbum, deleteAlbum, signIn, signUp };
+// --- Review Functions ---
+
+const getReviewsForAlbum = async (albumId) => {
+  try {
+    const res = await fetch(`${BASE_URL}/reviews/album/${albumId}`, buildOptions());
+    if (res.ok) {
+      return res.json();
+    }
+    throw new Error('Failed to fetch reviews');
+  } catch (err) {
+    throw err;
+  }
+};
+
+const createReview = async (reviewData) => {
+  try {
+    const res = await fetch(`${BASE_URL}/reviews`, buildOptions(reviewData, 'POST'));
+    if (res.ok) {
+      return res.json();
+    }
+    const errorData = await res.json();
+    throw new Error(errorData.error || 'Failed to create review');
+  } catch (err) {
+    throw err;
+  }
+};
+
+const deleteReview = async (reviewId) => {
+  try {
+    const res = await fetch(`${BASE_URL}/reviews/${reviewId}`, buildOptions(null, 'DELETE'));
+    if (res.ok) {
+      return true;
+    }
+    const errorData = await res.json();
+    throw new Error(errorData.message || 'Failed to delete review');
+  } catch (err) {
+    throw err;
+  }
+};
+
+// --- External API: iTunes Search for Album Artwork ---
+
+const searchAlbumArtwork = async (artist, albumTitle) => {
+  try {
+    const query = encodeURIComponent(`${artist} ${albumTitle}`);
+    const res = await fetch(`https://itunes.apple.com/search?term=${query}&entity=album&limit=5`);
+    
+    if (res.ok) {
+      const data = await res.json();
+      if (data.results && data.results.length > 0) {
+        // Return array of results with artwork
+        return data.results.map(result => ({
+          artworkUrl: result.artworkUrl100.replace('100x100', '600x600'), // Get larger image
+          albumName: result.collectionName,
+          artistName: result.artistName,
+          releaseDate: result.releaseDate
+        }));
+      }
+    }
+    return [];
+  } catch (err) {
+    return [];
+  }
+};
+
+export { 
+  getAlbums,
+  getPublicAlbums, 
+  getAlbum, 
+  createAlbum, 
+  updateAlbum, 
+  deleteAlbum, 
+  getReviewsForAlbum,
+  createReview,
+  deleteReview,
+  searchAlbumArtwork,
+  signIn, 
+  signUp 
+};

@@ -20,6 +20,7 @@ function Header() {
         </Link>
       </div>
       <div className="nav-links">
+        <Link to="/community">Community</Link>
         {isAuthenticated ? (
           <>
             <Link to="/albums">My Collection</Link>

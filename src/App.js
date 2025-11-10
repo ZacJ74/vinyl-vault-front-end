@@ -7,7 +7,8 @@ import { AuthProvider, useAuth } from './contexts/AuthContext';
 
 // Import the new private page component
 import AlbumIndex from './pages/AlbumIndex'; 
-import HomePage from './pages/HomePage'; 
+import HomePage from './pages/HomePage';
+import CommunityPage from './pages/CommunityPage'; 
 import NotFoundPage from './pages/NotFoundPage'; 
 import AuthForm from './forms/AuthForm';
 // --- Component Definition ---
@@ -37,6 +38,7 @@ function App() {
           <Routes>
             {/* Public Routes */}
             <Route path="/" element={<HomePage />} />
+            <Route path="/community" element={<CommunityPage />} />
             <Route path="/sign-in" element={<AuthForm mode="signin" />} />
             <Route path="/sign-up" element={<AuthForm mode="signup" />} />
 
