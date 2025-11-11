@@ -46,7 +46,6 @@ The app will open at [http://localhost:3001](http://localhost:3001)
 ## Technologies Used
 
 - **Frontend Framework:** React 19.2.0
-- **Routing:** React Router DOM 7.9.5
 - **HTTP Requests:** Native Fetch API
 - **Styling:** CSS3 with CSS Grid and Flexbox
 - **Authentication:** JWT (JSON Web Tokens)
@@ -63,13 +62,8 @@ The app will open at [http://localhost:3001](http://localhost:3001)
 
 Planned future enhancements:
 
-- [ ] **Review System:** Add ability to write and view reviews for albums
-- [ ] **Search & Filter:** Implement search by artist, title, or genre
-- [ ] **Album Details Page:** Dedicated page for each album with full track listings
-- [ ] **Image Upload:** Allow users to upload their own album cover images
+
 - [ ] **Statistics Dashboard:** Show collection statistics (total albums, genres breakdown, etc.)
 - [ ] **Wishlist Feature:** Separate list for albums users want to acquire
-- [ ] **Social Features:** Share collections with other users
-- [ ] **Dark Mode:** Toggle between light and dark themes
-- [ ] **Export Collection:** Download collection data as CSV or PDF
-- [ ] **Mobile App:** React Native version for iOS and Android
+
+
