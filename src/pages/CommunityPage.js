@@ -61,7 +61,7 @@ function CommunityPage() {
           const albumReviews = await getReviewsForAlbum(albumId);
           setReviews({ ...reviews, [albumId]: albumReviews });
         } catch (err) {
-          console.error('Failed to load reviews');
+          // Failed to load reviews
         }
       }
     }
