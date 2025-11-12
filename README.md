@@ -1,8 +1,10 @@
 # 🎵 Vinyl Vault
 
 ![Vinyl Vault Screenshot](src/assets/images/LandingPage.jpeg)
-![Sign in page] (src/assets/images/SignInPage.jpeg)
-![collection page] (src/assets/images/CollectionPage.jpeg)
+
+![Sign In Page](src/assets/images/SignInPage.jpeg)
+
+![collection page](src/assets/images/CollectionPage.jpeg)
 ## Description
 
 Vinyl Vault is a full-stack MERN application that allows music enthusiasts to catalog, manage, and share their vinyl record collections. Users can create an account, add albums to their personal vault with automatic artwork search via the iTunes API, write and read reviews with ratings (1-10), and explore other users' collections in the community page.
