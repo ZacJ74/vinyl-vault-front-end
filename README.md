@@ -1,6 +1,6 @@
 # 🎵 Vinyl Vault
 
-![Vinyl Vault Screenshot](src/assets/images/Screenshot 2025-11-12 at 1.12.12 PM.jpeg)
+![Vinyl Vault Screenshot](src/assets/images/LandingPage.jpeg)
 
 ## Description
 
