@@ -52,7 +52,7 @@ export const AuthProvider = ({ children }) => {
 
       if (type === 'signIn') {
         newToken = await signIn({ username, password });
-      } else { // type === 'signUp'
+      } else { 
         newToken = await signUp({ username, password });
       }
       
@@ -106,3 +106,5 @@ export const AuthProvider = ({ children }) => {
 
 // 4. Custom Hook for easy consumption
 export const useAuth = () => useContext(AuthContext);
+
+

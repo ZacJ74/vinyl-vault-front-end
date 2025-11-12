@@ -1,7 +1,5 @@
 
 
-// src/api/vinylVaultApi.js
-
 const BASE_URL = process.env.REACT_APP_BACK_END_SERVER_URL;
 
 
@@ -39,7 +37,7 @@ const signIn = async (credentials) => {
   }
 };
 
-/**
+/*
  * Handles user sign-up by sending profile data to the server.
  * @param {object} profile - User data (name, email, password, etc.).
  * @returns {Promise<object>} - Response containing user profile and token.

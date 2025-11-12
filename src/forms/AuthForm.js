@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useAuth } from '../contexts/AuthContext';
 
-/**
+/*
  * Reusable form component for both Sign In and Sign Up.
  * @param {string} mode - 'signin' or 'signup'
  */
