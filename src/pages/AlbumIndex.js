@@ -120,19 +120,19 @@ function AlbumIndex() {
       handleCloseForm();
       fetchAlbums();
     } catch (err) {
-      alert('Error saving album: ' + err.message);
+      showAlert('Save Error', 'Error saving album: ' + err.message);
     }
   };
 
-  const handleDelete = async (id) => {
-    if (!window.confirm('Are you sure you want to delete this album?')) return;
-    
-    try {
-      await deleteAlbum(id);
-      setAlbums(albums.filter(album => album._id !== id));
-    } catch (err) {
-      setError('Failed to delete album');
-    }
+  const handleDelete = (id) => {
+    showConfirm('Delete Album', 'Are you sure you want to delete this album?', async () => {
+      try {
+        await deleteAlbum(id);
+        setAlbums(albums.filter(album => album._id !== id));
+      } catch (err) {
+        setError('Failed to delete album');
+      }
+    });
   };
 
   const handleToggleReviews = async (albumId) => {
@@ -160,20 +160,21 @@ function AlbumIndex() {
       setReviewFormData({ content: '', rating: 5 });
       setShowReviewForm(null);
     } catch (err) {
-      alert('Failed to create review');
+      showAlert('Review Error', 'Failed to create review');
     }
   };
 
   const handleDeleteReview = async (reviewId, albumId) => {
-    if (!window.confirm('Delete this review?')) return;
-    
-    try {
-      await deleteReview(reviewId);
-      const updatedReviews = await getReviewsForAlbum(albumId);
-      setReviews({ ...reviews, [albumId]: updatedReviews });
-    } catch (err) {
-      alert('Failed to delete review');
-    }
+    showConfirm('Delete Review', 'Delete this review?', async () => {
+      try {
+        await deleteReview(reviewId);
+        const updatedReviews = await getReviewsForAlbum(albumId);
+        setReviews({ ...reviews, [albumId]: updatedReviews });
+      } catch (err) {
+        showAlert('Delete Error', 'Failed to delete review');
+      }
+    });
+    return;
   };
 
   // --- Conditional Rendering for UX ---

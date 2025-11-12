@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { getPublicAlbums, getReviewsForAlbum, createReview, deleteReview } from '../api/vinylVaultApi';
 import { useAuth } from '../contexts/AuthContext';
+import { useModal } from '../contexts/ModalContext';
 
 function CommunityPage() {
   const [albums, setAlbums] = useState([]);
@@ -12,6 +13,7 @@ function CommunityPage() {
   const [reviewFormData, setReviewFormData] = useState({ content: '', rating: 5 });
   const [searchQuery, setSearchQuery] = useState('');
   const { isAuthenticated, user } = useAuth();
+  const { showAlert, showConfirm } = useModal();
 
   useEffect(() => {
     fetchPublicAlbums();
@@ -76,20 +78,20 @@ function CommunityPage() {
       setReviewFormData({ content: '', rating: 5 });
       setShowReviewForm(null);
     } catch (err) {
-      alert('Failed to create review');
+      showAlert('Review Error', 'Failed to create review');
     }
   };
 
-  const handleDeleteReview = async (reviewId, albumId) => {
-    if (!window.confirm('Delete this review?')) return;
-    
-    try {
-      await deleteReview(reviewId);
-      const updatedReviews = await getReviewsForAlbum(albumId);
-      setReviews({ ...reviews, [albumId]: updatedReviews });
-    } catch (err) {
-      alert('Failed to delete review');
-    }
+  const handleDeleteReview = (reviewId, albumId) => {
+    showConfirm('Delete Review', 'Delete this review?', async () => {
+      try {
+        await deleteReview(reviewId);
+        const updatedReviews = await getReviewsForAlbum(albumId);
+        setReviews({ ...reviews, [albumId]: updatedReviews });
+      } catch (err) {
+        showAlert('Delete Error', 'Failed to delete review');
+      }
+    });
   };
 
   if (isLoading) return <div className="album-index"><p>Loading community albums...</p></div>;

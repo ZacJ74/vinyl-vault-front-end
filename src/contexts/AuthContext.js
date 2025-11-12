@@ -1,10 +1,10 @@
 import { createContext, useContext, useState, useEffect } from 'react';
 import { signUp, signIn } from '../api/vinylVaultApi'; 
 
-// 1. Create the Context
+//  Create the Context
 const AuthContext = createContext();
 
-// 2. Auth Provider Component
+//  Auth Provider Component
 export const AuthProvider = ({ children }) => {
   // State to hold the token and user data
   const [token, setToken] = useState(localStorage.getItem('token'));

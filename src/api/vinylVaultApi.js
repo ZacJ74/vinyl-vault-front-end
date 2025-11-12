@@ -262,7 +262,6 @@ const searchAlbumArtwork = async (artist, albumTitle) => {
     
     return [];
   } catch (err) {
-    console.error('Album artwork search error:', err);
     return [];
   }
 };

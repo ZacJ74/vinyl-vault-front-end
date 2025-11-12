@@ -3,6 +3,8 @@ import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-d
 import './App.css';
 import Header from './components/Header';
 import { AuthProvider, useAuth } from './contexts/AuthContext';
+import { ModalProvider, useModal } from './contexts/ModalContext';
+import Modal from './components/Modal';
 
 
 // Import the new private page component
@@ -28,38 +30,58 @@ const PrivateRoute = ({ children }) => {
 };
 
 
+function AppWithModal() {
+  const { modal, closeModal } = useModal();
+  
+  return (
+    <>
+      <Router>
+        {/* AuthProvider wraps the entire application to provide context */}
+        <AuthProvider>
+          <Header />
+          <main className="container">
+            <Routes>
+              {/* Public Routes */}
+              <Route path="/" element={<HomePage />} />
+              <Route path="/community" element={<CommunityPage />} />
+              <Route path="/sign-in" element={<AuthForm mode="signin" />} />
+              <Route path="/sign-up" element={<AuthForm mode="signup" />} />
+
+              {/* Private Route: Album Index */}
+              {/* The PrivateRoute wrapper ensures this path is only accessible 
+                  if the user has a valid, non-expired JWT token. */}
+              <Route 
+                path="/albums" 
+                element={
+                  <PrivateRoute>
+                    <AlbumIndex />
+                  </PrivateRoute>
+                } 
+              />
+
+              {/* Catch-all route for 404 */}
+              <Route path="*" element={<NotFoundPage />} />
+            </Routes>
+          </main>
+        </AuthProvider>
+      </Router>
+      <Modal 
+        isOpen={modal.isOpen}
+        onClose={closeModal}
+        title={modal.title}
+        message={modal.message}
+        type={modal.type}
+        onConfirm={modal.onConfirm}
+      />
+    </>
+  );
+}
+
 function App() {
   return (
-    <Router>
-      {/* AuthProvider wraps the entire application to provide context */}
-      <AuthProvider>
-        <Header />
-        <main className="container">
-          <Routes>
-            {/* Public Routes */}
-            <Route path="/" element={<HomePage />} />
-            <Route path="/community" element={<CommunityPage />} />
-            <Route path="/sign-in" element={<AuthForm mode="signin" />} />
-            <Route path="/sign-up" element={<AuthForm mode="signup" />} />
-
-            {/* Private Route: Album Index */}
-            {/* The PrivateRoute wrapper ensures this path is only accessible 
-                if the user has a valid, non-expired JWT token. */}
-            <Route 
-              path="/albums" 
-              element={
-                <PrivateRoute>
-                  <AlbumIndex />
-                </PrivateRoute>
-              } 
-            />
-
-            {/* Catch-all route for 404 */}
-            <Route path="*" element={<NotFoundPage />} />
-          </Routes>
-        </main>
-      </AuthProvider>
-    </Router>
+    <ModalProvider>
+      <AppWithModal />
+    </ModalProvider>
   );
 }
 
