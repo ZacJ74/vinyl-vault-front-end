@@ -1,6 +1,6 @@
 # 🎵 Vinyl Vault
 
-![Vinyl Vault Screenshot](/Users/zacharyjennings/code/ga/unit3/project/vinylvault-frontend/src/assets/images/Screenshot 2025-11-12 at 1.12.12 PM.png)
+![Vinyl Vault Screenshot](/Users/zacharyjennings/code/ga/unit3/project/vinylvault-frontend/src/assets/images/Screenshot 2025-11-12 at 1.12.12 PM.jpeg)
 
 ## Description
 
