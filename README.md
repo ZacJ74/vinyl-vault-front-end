@@ -1,6 +1,6 @@
 # 🎵 Vinyl Vault
 
-![Vinyl Vault Screenshot](https://via.placeholder.com/800x400/6a0dad/ffffff?text=Vinyl+Vault)
+![Vinyl Vault Screenshot](/Users/zacharyjennings/code/ga/unit3/project/vinylvault-frontend/src/assets/images/Screenshot 2025-11-12 at 1.12.12 PM.png)
 
 ## Description
 
@@ -24,7 +24,7 @@ As a music enthusiast, I wanted to create a digital space where collectors can n
 
 **Deployed App:** [Live App Link - Add after deployment]
 
-**Backend Repository:** [VinylVault-backend](https://github.com/YOUR_USERNAME/VinylVault-backend)
+**Backend Repository:** [VinylVault-backend](https://github.com/ZacJ74/Vinyl-Vault-back-end.git)
 
 
 ## Technologies Used
